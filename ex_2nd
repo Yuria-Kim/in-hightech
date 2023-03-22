@@ -1,0 +1,54 @@
+menu = ["짜장면", "짬뽕", "군만두", "탕수육"]
+price = [5000, 6000, 8000, 10000] 
+
+print("1.", menu[0],"-",price[0],"원\t", "2.", menu[1],"-",price[1],"원")
+print("3.", menu[2],"-",price[2],"원\t", "4.", menu[3],"-",price[3],"원")
+
+order=int(input("1. 위 메뉴 중 주문할 메뉴의 번호를 쓰세요:"))
+count=int(input("2. 위 메뉴의 주문 수량을 쓰세요:"))
+
+if order==1:
+  print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다."  %(menu[0],count,count*price[0]))
+elif order==2:
+  print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다."  %(menu[1],count,count*price[1]))
+elif order==3:
+  print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다."  %(menu[2],count,count*price[2]))
+elif order==4:
+  print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다."  %(menu[3],count,count*price[3]))
+else :
+  print("잘못된 주문입니다.")
+
+re_order=0 # 주문 횟수 / 반복에서 벗어나기 위해 추가 주문시마다 +1되게 만들기 위해 0으로 설정
+
+while re_order < 3: # 3회까지는 반복
+  customer_order = input("3. 추가 주문을 하시겠습니까? (Y/N)")
+  if customer_order=="Y" or customer_order=="y": # 딱 두가지 변수에만 작동되게 하기위해 각각 지정
+    re_order += 1
+    print("%s번째 추가 주문입니다.\n" %re_order)
+
+    print("1.", menu[0],"-",price[0],"원\t", "2.", menu[1],"-",price[1],"원")
+    print("3.", menu[2],"-",price[2],"원\t", "4.", menu[3],"-",price[3],"원\n") # 메뉴 재출력
+
+    order=int(input("1. 위 메뉴 중 주문할 메뉴의 번호를 쓰세요:"))
+    count=int(input("2. 위 메뉴의 주문 수량을 쓰세요:"))
+
+    if order==1:
+      print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다.\n"  %(menu[0],count,count*price[0]))
+    elif order==2:
+      print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다.\n"  %(menu[1],count,count*price[1]))
+    elif order==3:
+      print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다.\n"  %(menu[2],count,count*price[2]))
+    elif order==4:
+      print("주문하신 메뉴는 %s 이고, 주문 수량은 %d그릇이며 주문금액은 %d입니다.\n"  %(menu[3],count,count*price[3]))
+    else :
+      print("잘못된 주문입니다.\n")
+      continue
+      # 두번쨰 if 부터 여기까지 다시 주문받는 코드 / continue를 사용해서 메뉴1~4 이외의 값을 넣었을때 error표시 보여주자.
+
+  else: 
+      print("주문이 완료되었습니다.") 
+      break
+      
+  if re_order==3: # 여기 if 문은 while문 이후에 실행되는 부분이니까 들여쓰기 꼭꼭! 반복문을 중복해서 쓸땐 loop계산 잘하자 ㅠㅠ
+    print("추가주문은 총 3회까지만 가능합니다")
+    break
